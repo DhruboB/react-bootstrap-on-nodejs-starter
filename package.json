@@ -1,0 +1,87 @@
+{
+  "name": "nodejsreactapp",
+  "version": "1.0.0",
+  "description": "A Node.js based React JS web application",
+  "private": true,
+  "engines": {
+    "node": "^8.17.0"
+  },
+  "config": {
+    "entrypoint": "server/server.js",
+    "dev_server_port": "3000",
+    "docker_img_name": "ui-runtime"
+  },
+  "scripts": {
+    "start": "node $npm_package_config_entrypoint",
+    "debug": "nf --procfile Procfile-debug --port $npm_package_config_dev_server_port start",
+    "debug:brk": "node --inspect-brk=0.0.0.0:9229 $npm_package_config_entrypoint",
+    "debug:legacy": "node --debug=0.0.0.0:5858 $npm_package_config_entrypoint",
+    "test": "nyc mocha --exit",
+    "dev": "nf --procfile Procfile-dev --port $npm_package_config_dev_server_port start",
+    "build": "webpack --progress --config webpack.prod.js",
+    "postinstall": "npm run build;",
+    "lint": "eslint src",
+    "client-reload": "webpack-dev-server --host 0.0.0.0  --history-api-fallback --progress --inline --config webpack.dev-standalone.js",
+    "server-reload": "nodemon server/server.js",
+    "setup": "scripts/setup.sh",
+    "build-dcokerimg": "scripts/builddockerimg.sh $npm_package_config_docker_img_name",
+    "push-dcokerimg": "scripts/pushdockerimg.sh $npm_package_config_docker_img_name",
+    "run-container": "scripts/runcontainer.sh $npm_package_config_dev_server_port $npm_package_config_docker_img_name"
+  },
+  "nodemonConfig": {
+    "env": {
+      "NODE_HEAPDUMP_OPTIONS": "nosignal"
+    }
+  },
+  "dependencies": {
+    "body-parser": "^1.18.3",
+    "express": "^4.16.4",
+    "log4js": "^4.0.2"
+  },
+  "devDependencies": {
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.4.0",
+    "@testing-library/user-event": "^7.2.1",
+    "babel-core": "^6.26.0",
+    "babel-loader": "^7.1.2",
+    "babel-preset-react": "^6.23.0",
+    "chai": "^4.2.0",
+    "copy-webpack-plugin": "^4.5.1",
+    "css-loader": "^0.28.7",
+    "foreman": "^2.0.0",
+    "html-webpack-plugin": "^3.2.0",
+    "mocha": "^6.0.0",
+    "node-sass": "^4.8.3",
+    "nodemon": "^2.0.2",
+    "nyc": "^13.3.0",
+    "react": "^16.12.0",
+    "react-bootstrap": "^1.0.0-beta.16",
+    "react-dom": "^16.12.0",
+    "react-router-bootstrap": "^0.25.0",
+    "react-router-dom": "^5.1.2",
+    "react-scripts": "3.3.0",
+    "sass-loader": "^7.0.1",
+    "style-loader": "^0.21.0",
+    "styled-components": "^4.4.1",
+    "uglifyjs-webpack-plugin": "^1.0.1",
+    "webpack": "^4.41.4",
+    "webpack-cli": "^3.1.1",
+    "webpack-dev-server": "^3.10.1",
+    "webpack-merge": "^4.1.1"
+  },
+  "eslintConfig": {
+    "extends": "react-app"
+  },
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
+    ]
+  }
+}
