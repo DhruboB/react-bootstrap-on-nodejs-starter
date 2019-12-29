@@ -8,8 +8,7 @@
   },
   "config": {
     "entrypoint": "server/server.js",
-    "dev_server_port": "3000",
-    "docker_img_name": "ui-runtime"
+    "dev_server_port": "3000"
   },
   "scripts": {
     "start": "node $npm_package_config_entrypoint",
@@ -24,9 +23,9 @@
     "client-reload": "webpack-dev-server --host 0.0.0.0  --history-api-fallback --progress --inline --config webpack.dev-standalone.js",
     "server-reload": "nodemon server/server.js",
     "setup": "scripts/setup.sh",
-    "build-dcokerimg": "scripts/builddockerimg.sh $npm_package_config_docker_img_name",
-    "push-dcokerimg": "scripts/pushdockerimg.sh $npm_package_config_docker_img_name",
-    "run-container": "scripts/runcontainer.sh $npm_package_config_dev_server_port $npm_package_config_docker_img_name"
+    "build-dcokerimg": "scripts/builddockerimg.sh",
+    "push-dcokerimg": "scripts/pushdockerimg.sh",
+    "run-container": "scripts/runcontainer.sh $npm_package_config_dev_server_port"
   },
   "nodemonConfig": {
     "env": {

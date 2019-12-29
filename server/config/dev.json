@@ -1,5 +1,9 @@
 {
+  "host": "localhost",
   "port": 3000,
   "health_port": 3100,
-  "host": "localhost"
+  "docker_img_name": "ui-runtime",
+  "docker_img_version": "v1",
+  "container_name": "ui-container",
+  "container_expose_port": "3000"
 }

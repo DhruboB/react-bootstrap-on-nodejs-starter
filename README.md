@@ -28,7 +28,7 @@ To get started building this application locally, you can either run the applica
 
 ### Native Application Development
 
-Install the latest [Node.js](https://nodejs.org/en/download/) 8.17.0+ LTS version. We are not using latest to make it compatible with node js version with available Node container from Docker Hub. Otherwise, latest version should also be fine.
+**Pre-req:** Install the latest [Node.js](https://nodejs.org/en/download/) 8.17.0+ LTS version. We are not using latest intentionally to make it compatible with available Node container version from Docker Hub. Otherwise, latest version should also be fine. For development, you also need python2 in your local system, which is a anyway a common for Developer workspace. This is requried to parse json file, however you can use `jq` instead. In that case, you need to modify docker image management scripts.
 
 Once the GIT has been installed, you can download the project with:
 
@@ -69,6 +69,28 @@ npm run dev
 ```
 
 Above command will create a running nodejs server in development mode and UI access at `http://localhost:3000`. It is expected that if you make any changes to Source Code , change will imemdiatly(circa) be reflected on running browser. Not only this, dev mode will automatically takes care of compiling your source code and production level packaging. Webpack is used to organize, compress and create static output assets as mentioned above. This considerably improves UI experience.
+
+Like to manage container images separately and push it to a dedicated project repository ? Please update `server/config/dev.json` file with corresponding values and run following commands from project root directory.
+
+to build docker image
+
+```bash
+npm run build-dcokerimg
+```
+
+to publish docker image to registry
+
+```bash
+npm run push-dcokerimg
+```
+
+to run docker container
+
+```bash
+npm run run-container
+```
+
+\*\* currently there is port binding problem, will fix shortly
 
 ### Naming Convention - File
 
