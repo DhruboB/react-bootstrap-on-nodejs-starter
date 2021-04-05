@@ -44,7 +44,7 @@ npm run setup
 
 This will set up everything for you in local system and trigger a development mode server. Your application will be running at `http://localhost:3000`. You can access the health endpoint at `http://localhost:3100/health`. If you don't like to continue any development work now, then just kill the running console command by using ctrl+C.
 
-Wnat to explore the application locally ? Run following command and open the above url in a browser, otherwise go to [developer section](#developer-guide) section.
+Want to explore the application locally ? Run following command and open the above url in a browser, otherwise go to [developer section](#developer-guide).
 
 ```bash
 npm run start
@@ -62,7 +62,7 @@ If you are in this section then you are ready to kick start reactjs development 
 npm run setup
 ```
 
-If you killed the server before asa instrcuted, you can continue with below command each time when you feel to start developing
+If you killed the server before as instructed and like to continue working , please execute below command each time when you feel to start developing
 
 ```bash
 npm run dev
